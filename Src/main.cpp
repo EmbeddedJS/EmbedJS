@@ -2,16 +2,19 @@
 #include "TinyJS.h"
 #include "TinyJS_Functions.h"
 
-static void SystemClock_Config(void);
-static uint32_t GetSector(uint32_t Address);
+extern "C"{void _init(){};}
 
+// System Clock 설
+static void SystemClock_Config(void);
+
+// LED Togge
 void LEDToggle(CScriptVar *v, void *userdata);
 
 static GPIO_InitTypeDef  GPIO_InitStruct;
 
 int main(int argc,char* argv[]){
 	HAL_Init();
-	/* Configure the system clock */
+
 	SystemClock_Config();
     __GPIOE_CLK_ENABLE();
 
@@ -36,10 +39,8 @@ int main(int argc,char* argv[]){
 }
 
 void LEDToggle(CScriptVar *v, void *userdata){
-	//int delay = v->getParameter("delay")->getInt();
-
+	userdata;
     HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_13);
-    /* Insert delay 100 ms */
     HAL_Delay(1000);
 }
 
