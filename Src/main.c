@@ -1,23 +1,22 @@
 #include "main.h"
-//#include "TinyJS.h"
 #include "cmsis_os.h"
-
-//extern "C"{
-//	void _init(){};
-//}
 
 void _init(){};
 
-// System Clock
+// Script Enine
+extern void EngineInit();
+extern void Exectue(const char*);
+
+// System Clock and GPIOClock
 static void SystemClock_Config(void);
 static void GPIOClock_Enable(void);
 
 // LED Tooggle
-static void BSP_LED_Init(void);
-//void LEDToggle(CScriptVar *v, void *userdata);
-
-static void EngineThread(void const * argument);
 static GPIO_InitTypeDef  GPIO_InitStruct;
+static void BSP_LED_Init(void);
+
+// Thread
+static void EngineThread(void const * argument);
 
 int main(int argc,char* argv[]){
 	HAL_Init();
@@ -74,6 +73,7 @@ static void GPIOClock_Enable(void){
 }
 
 static void BSP_LED_Init(void){
+	//GPIOE 13,14,15 Port Init
     GPIO_InitStruct.Pin = GPIO_PIN_13;
     GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
     GPIO_InitStruct.Pull = GPIO_PULLUP;
@@ -88,20 +88,10 @@ static void BSP_LED_Init(void){
 }
 
 
-extern void excute(const char *command);
 static void EngineThread(void const * argument){
-    //CTinyJS *js = new CTinyJS();
-    //js->addNative("function Toggle()", &LEDToggle, 0);
 	EngineInit();
-	while(1){
-		Execute("Toggle();");
-		osDelay(1000);
-		/*
-		try{
-			//js->execute((const char *)ADDR_FLASH_SECTOR_9);
-			osDelay(1000);
-		}catch(CScriptException e){
+	Execute("while(1){Toggle();Delay(1000);}");
 
-		}*/
-	}
+	//Never here
+	while(1);
 }

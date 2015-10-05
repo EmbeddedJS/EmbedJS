@@ -1,4 +1,5 @@
 /* ----------------------------------------------------------------------
+
  * Copyright (C) 2011 ARM Limited. All rights reserved.
  *
  * $Date:        10. Februar 2012

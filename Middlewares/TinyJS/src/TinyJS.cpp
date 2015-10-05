@@ -1330,8 +1330,8 @@ void CTinyJS::execute(const string &code) {
         msg << " at " << l->getPosition();
         delete l;
         l = oldLex;
-
-        throw new CScriptException(msg.str());
+        return;
+        //throw new CScriptException(msg.str());
     }
     delete l;
     l = oldLex;
