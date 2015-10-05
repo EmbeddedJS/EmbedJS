@@ -1,0 +1,3 @@
+  GROUP(
+   libnosys.a
+ )
