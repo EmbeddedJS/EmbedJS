@@ -32,9 +32,6 @@
  extern "C" {
 #endif
 
-extern void tcpecho_init(void);
-extern void udpecho_init(void);
-
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f2xx_hal.h"
 
@@ -66,6 +63,8 @@ extern void udpecho_init(void);
 #define GW_ADDR2   100
 #define GW_ADDR3   1
 
+
+//Flash Memory Sector Address Defines
 #define ADDR_FLASH_SECTOR_0     ((uint32_t)0x08000000) /* Base address of Sector 0, 16 Kbytes */
 #define ADDR_FLASH_SECTOR_1     ((uint32_t)0x08004000) /* Base address of Sector 1, 16 Kbytes */
 #define ADDR_FLASH_SECTOR_2     ((uint32_t)0x08008000) /* Base address of Sector 2, 16 Kbytes */

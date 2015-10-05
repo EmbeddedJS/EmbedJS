@@ -63,9 +63,6 @@
     1 tab == 4 spaces!
 */
 
-#ifdef __cplusplus
- extern "C" {
-#endif
 
 #ifndef FREERTOS_CONFIG_H
 #define FREERTOS_CONFIG_H
@@ -157,8 +154,8 @@ See http://www.FreeRTOS.org/RTOS-Cortex-M3-M4.html. */
 	
 /* Normal assert() semantics without relying on the provision of an assert.h
 header file. */
-#define configASSERT( x ) if( ( x ) == 0 ) { taskDISABLE_INTERRUPTS(); for( ;; ); }	
-	
+#define configASSERT( x ) if( ( x ) == 0 ) { taskDISABLE_INTERRUPTS(); for( ;; ); }
+
 /* Definitions that map the FreeRTOS port interrupt handlers to their CMSIS
 standard names. */
 #define vPortSVCHandler SVC_Handler
@@ -171,8 +168,4 @@ standard names. */
 #endif /* FREERTOS_CONFIG_H */
 
  // Hard Fault 방지
- #define configUSE_TIME_SLICING 0
-
-#ifdef __cplusplus
-}
-#endif
+#define configUSE_TIME_SLICING 0
