@@ -14,16 +14,13 @@ extern "C"{
 	}
 
 	static void RegisterNative(){
-		js->addNative("function Toggle()", &LEDToggle, 0);
 		js->addNative("function Delay(msec)",&Delay,0);
+		js->addNative("function pinMode(type,pin,mode)",&js_pinMode,0);
+		js->addNative("function digitalWrite(type,pin,value)",&js_digitalWrite,0);
+		js->addNative("function digitalRead(type,pin)",&js_digitalRead,0);
 	}
 	void Execute(const char *str){
 		js->execute(str);
-	}
-
-	void LEDToggle(CScriptVar *v, void *userdata){
-		(void *)userdata;
-	    HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_13);
 	}
 
 	void Delay(CScriptVar *v, void *userdata){

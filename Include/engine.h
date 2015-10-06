@@ -13,15 +13,11 @@
 extern "C"{
 #include "main.h"
 #include "cmsis_os.h"
-#include "JSNative.h"
+#include "js_Digital_IO.h"
 
 	void EngineInit();
 	void Execute(const char * str);
 	static void RegisterNative();
-
-	//BSP LED1 Toggle
-	void LEDToggle(CScriptVar *v, void *userdata);
-
 	//Delay Functions
 	void Delay(CScriptVar *v, void *userdata);
 }
