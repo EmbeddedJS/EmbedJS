@@ -3,27 +3,28 @@ extern "C"{
 	static GPIO_TypeDef* Types[] = {
 		0,0,GPIOC,0,0
 	};
-	static uint16_t Pins[] = {
+	static uint32_t Pins[] = {
 			0,0,0,0,0,0,TIM_CHANNEL_1,TIM_CHANNEL_2,TIM_CHANNEL_3,
 			TIM_CHANNEL_4,0,0,0,0,0,0
 	};
 
 	TIM_HandleTypeDef    TimHandle;
 	TIM_OC_InitTypeDef sConfig;
-	uint32_t uhPrescalerValue = (uint32_t)((SystemCoreClock / 2) / 15000000) - 1;
+	uint32_t uhPrescalerValue = 0;
 
 	void js_analogWrite(CScriptVar *v, void *userdata){
 		int type = v->getParameter("type")->getInt();
 		int pin = v->getParameter("pin")->getInt();
 		int value = v->getParameter("value")->getInt();
 
-		if(!Types[type] || !Pins[pin] || value < 0 || value > 1024)
+		if( Types[type] == 0 || Pins[pin] == 0 || value < 0 || value > 1024)
 			return;
 
 		TimHandle.Instance = TIMx;
 
+		uhPrescalerValue = (uint32_t)((SystemCoreClock / 2) / 15000000) - 1;
 		TimHandle.Init.Prescaler = uhPrescalerValue;
-		TimHandle.Init.Period = 1024;
+		TimHandle.Init.Period = 1024 -1;
 		TimHandle.Init.ClockDivision = 0;
 		TimHandle.Init.CounterMode = TIM_COUNTERMODE_UP;
 	    if(HAL_TIM_PWM_Init(&TimHandle) != HAL_OK)
