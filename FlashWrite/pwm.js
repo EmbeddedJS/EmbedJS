@@ -11,7 +11,7 @@ var OUTPUT = 1;
 var LOW = 0;
 var HIGH = 1;	
 
-//PWM Setting
+//PWM Setting, 14.62kHz
 var PWM_Pin = 9;
 var value = 1024;
 
