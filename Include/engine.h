@@ -13,7 +13,7 @@
 extern "C"{
 #include "main.h"
 #include "cmsis_os.h"
-#include "js_Digital_IO.h"
+#include "JSNative.h"
 
 	void EngineInit();
 	void Execute(const char * str);

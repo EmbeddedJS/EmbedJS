@@ -2079,9 +2079,9 @@ void CTinyJS::statement(bool &execute) {
         delete forIter;
         delete forBody;
         if (loopCount<=0) {
-            root->trace();
-            TRACE("FOR Loop exceeded %d iterations at %s\n", TINYJS_LOOP_MAX_ITERATIONS, l->getPosition().c_str());
-            throw new CScriptException("LOOP_ERROR");
+           // root->trace();
+           // TRACE("FOR Loop exceeded %d iterations at %s\n", TINYJS_LOOP_MAX_ITERATIONS, l->getPosition().c_str());
+           // throw new CScriptException("LOOP_ERROR");
         }
     } else if (l->tk==LEX_R_RETURN) {
         l->match(LEX_R_RETURN);
