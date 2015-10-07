@@ -18,6 +18,7 @@ extern "C"{
 		js->addNative("function pinMode(type,pin,mode)",&js_pinMode,0);
 		js->addNative("function digitalWrite(type,pin,value)",&js_digitalWrite,0);
 		js->addNative("function digitalRead(type,pin)",&js_digitalRead,0);
+		js->addNative("function analogWrite(pin,value)",&js_analogWrite,0);
 	}
 	void Execute(const char *str){
 		js->execute(str);
