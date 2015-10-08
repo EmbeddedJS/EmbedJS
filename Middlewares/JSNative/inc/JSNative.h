@@ -10,5 +10,5 @@
 
 #include "js_Digital_IO.h"
 #include "js_PWM.h"
-
+#include "js_Serial3.h"
 #endif /* MIDDLEWARES_JSNATIVE_INC_JSNATIVE_H_ */
