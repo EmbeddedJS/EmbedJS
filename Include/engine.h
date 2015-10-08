@@ -14,7 +14,6 @@ extern "C"{
 #include "main.h"
 #include "cmsis_os.h"
 #include "JSNative.h"
-
 	void EngineInit();
 	void Execute(const char * str);
 	static void RegisterNative();

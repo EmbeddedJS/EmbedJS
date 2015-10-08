@@ -33,13 +33,14 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f2xx_it.h" 
 #include "ethernetif.h" 
-
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 extern void xPortSysTickHandler( void );
+extern UART_HandleTypeDef Serial3;
+extern void HAL_UART_IRQHandler(UART_HandleTypeDef *huart);
 /* Private functions ---------------------------------------------------------*/
 
 /******************************************************************************/
@@ -154,16 +155,7 @@ void EXTI15_10_IRQHandler(void)
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_14);
 }
 
-/**
-  * @brief  This function handles PPP interrupt request.
-  * @param  None
-  * @retval None
-  */
-/*void PPP_IRQHandler(void)
+void USART3_IRQHandler(void)
 {
-}*/
-
-#ifdef __cplusplus
+	HAL_UART_IRQHandler(&Serial3);
 }
-#endif
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

@@ -13,7 +13,7 @@ var HIGH = 1;
 pinMode(E,13,OUTPUT);
 while(1){
 	digitalWrite(E,13,1);
-	Delay(3000);
+	Delay(100);
 	digitalWrite(E,13,0);
-	Delay(1000);
+	Delay(100);
 }
