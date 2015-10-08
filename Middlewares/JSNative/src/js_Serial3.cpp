@@ -7,9 +7,10 @@ extern "C"{
 	static uint8_t RxBuffer3[BUFSIZE];
 
 	void js_Serial3_Begin(CScriptVar *v, void *userdata){
+		int speed = v->getParameter("speed")->getInt();
 		Serial3_init();
 		Serial3.Instance        = USART3;
-		Serial3.Init.BaudRate   = 9600;
+		Serial3.Init.BaudRate   = speed;
 		Serial3.Init.WordLength = UART_WORDLENGTH_8B;
 		Serial3.Init.StopBits   = UART_STOPBITS_1;
 		Serial3.Init.Parity     = UART_PARITY_NONE;
