@@ -90,7 +90,7 @@ static void BSP_LED_Init(void){
 
 static void EngineThread(void const * argument){
 	EngineInit();
-	//Execute("while(1){Toggle();Delay(1000);}");
+	//Execute("while(1){Delay(1000);}");
 	Execute((const char *)ADDR_FLASH_SECTOR_10);
 	//Never here
 	while(1);

@@ -222,13 +222,13 @@ void scArrayJoin(CScriptVar *c, void *data) {
 
 // ----------------------------------------------- Register Functions
 void registerFunctions(CTinyJS *tinyJS) {
-    tinyJS->addNative("function exec(jsCode)", scExec, tinyJS); // execute the given code
-    tinyJS->addNative("function eval(jsCode)", scEval, tinyJS); // execute the given string (an expression) and return the result
-    tinyJS->addNative("function trace()", scTrace, tinyJS);
-    tinyJS->addNative("function Object.dump()", scObjectDump, 0);
-    tinyJS->addNative("function Object.clone()", scObjectClone, 0);
-    tinyJS->addNative("function Math.rand()", scMathRand, 0);
-    tinyJS->addNative("function Math.randInt(min, max)", scMathRandInt, 0);
+    ///tinyJS->addNative("function exec(jsCode)", scExec, tinyJS); // execute the given code
+    //tinyJS->addNative("function eval(jsCode)", scEval, tinyJS); // execute the given string (an expression) and return the result
+    //tinyJS->addNative("function trace()", scTrace, tinyJS);
+    //tinyJS->addNative("function Object.dump()", scObjectDump, 0);
+    //tinyJS->addNative("function Object.clone()", scObjectClone, 0);
+    //tinyJS->addNative("function Math.rand()", scMathRand, 0);
+    //tinyJS->addNative("function Math.randInt(min, max)", scMathRandInt, 0);
     tinyJS->addNative("function charToInt(ch)", scCharToInt, 0); //  convert a character to an int - get its value
     tinyJS->addNative("function String.indexOf(search)", scStringIndexOf, 0); // find the position of a string in a string, -1 if not
     tinyJS->addNative("function String.substring(lo,hi)", scStringSubstring, 0);
@@ -240,8 +240,8 @@ void registerFunctions(CTinyJS *tinyJS) {
     tinyJS->addNative("function Integer.valueOf(str)", scIntegerValueOf, 0); // value of a single character
     tinyJS->addNative("function JSON.stringify(obj, replacer)", scJSONStringify, 0); // convert to JSON. replacer is ignored at the moment
     // JSON.parse is left out as you can (unsafely!) use eval instead
-    tinyJS->addNative("function Array.contains(obj)", scArrayContains, 0);
-    tinyJS->addNative("function Array.remove(obj)", scArrayRemove, 0);
-    tinyJS->addNative("function Array.join(separator)", scArrayJoin, 0);
+    //tinyJS->addNative("function Array.contains(obj)", scArrayContains, 0);
+    //tinyJS->addNative("function Array.remove(obj)", scArrayRemove, 0);
+    //tinyJS->addNative("function Array.join(separator)", scArrayJoin, 0);
 }
 
