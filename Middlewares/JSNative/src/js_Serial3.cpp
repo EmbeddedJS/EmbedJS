@@ -16,8 +16,16 @@ extern "C"{
 		Serial3.Init.Parity     = UART_PARITY_NONE;
 		Serial3.Init.HwFlowCtl  = UART_HWCONTROL_NONE;
 		Serial3.Init.Mode       = UART_MODE_TX_RX;
-		if (HAL_UART_Init(&Serial3) != HAL_OK);
-		if (HAL_UART_Receive_IT(&Serial3,RxBuffer3,BUFSIZE) != HAL_OK);
+		if (HAL_UART_Init(&Serial3) != HAL_OK){
+			v->getReturnVar()->setInt(0);
+			return;
+		}
+		if (HAL_UART_Receive_IT(&Serial3,RxBuffer3,BUFSIZE) != HAL_OK){
+			v->getReturnVar()->setInt(0);
+			return;
+		}
+		v->getReturnVar()->setInt(1);
+
 	}
 
 	void js_Serial3_Print(CScriptVar *v, void *userdata){
