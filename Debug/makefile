@@ -9,6 +9,7 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include Src/subdir.mk
+-include Middlewares/TinyJS/src/subdir.mk
 -include Middlewares/Third_Party/LwIP/system/OS/subdir.mk
 -include Middlewares/Third_Party/LwIP/src/netif/subdir.mk
 -include Middlewares/Third_Party/LwIP/src/core/ipv4/subdir.mk
@@ -18,20 +19,8 @@ RM := rm -rf
 -include Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/CMSIS_RTOS/subdir.mk
+-include Middlewares/JSNative/src/subdir.mk
 -include Drivers/STM32F2xx_HAL_Driver/Src/subdir.mk
--include Drivers/BSP/STM322xG_EVAL/subdir.mk
--include Drivers/BSP/Components/ts3510/subdir.mk
--include Drivers/BSP/Components/stmpe811/subdir.mk
--include Drivers/BSP/Components/stmpe1600/subdir.mk
--include Drivers/BSP/Components/ov2640/subdir.mk
--include Drivers/BSP/Components/lsm303dlhc/subdir.mk
--include Drivers/BSP/Components/lis3dsh/subdir.mk
--include Drivers/BSP/Components/lis302dl/subdir.mk
--include Drivers/BSP/Components/l3gd20/subdir.mk
--include Drivers/BSP/Components/ili9341/subdir.mk
--include Drivers/BSP/Components/ili9325/subdir.mk
--include Drivers/BSP/Components/ili9320/subdir.mk
--include Drivers/BSP/Components/cs43l22/subdir.mk
 -include subdir.mk
 -include objects.mk
 
@@ -79,7 +68,7 @@ all: EmbedJS.elf secondary-outputs
 EmbedJS.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross ARM C++ Linker'
-	arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T "/Users/InhoChoi/Documents/workspace/EmbedJS/STM32F217IG_FLASH.ld" -nostartfiles -Xlinker --gc-sections -Wl,-Map,"EmbedJS.map" --specs=nano.specs -o "EmbedJS.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T "/Users/InhoChoi/Documents/workspace/EmbedJS/ldscripts/libs.ld" -T "/Users/InhoChoi/Documents/workspace/EmbedJS/STM32F217IG_FLASH.ld" -nostartfiles -Xlinker --gc-sections -Wl,-Map,"EmbedJS.map" --specs=nano.specs -o "EmbedJS.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

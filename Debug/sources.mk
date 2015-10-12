@@ -27,20 +27,8 @@ CPP_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-Drivers/BSP/Components/cs43l22 \
-Drivers/BSP/Components/ili9320 \
-Drivers/BSP/Components/ili9325 \
-Drivers/BSP/Components/ili9341 \
-Drivers/BSP/Components/l3gd20 \
-Drivers/BSP/Components/lis302dl \
-Drivers/BSP/Components/lis3dsh \
-Drivers/BSP/Components/lsm303dlhc \
-Drivers/BSP/Components/ov2640 \
-Drivers/BSP/Components/stmpe1600 \
-Drivers/BSP/Components/stmpe811 \
-Drivers/BSP/Components/ts3510 \
-Drivers/BSP/STM322xG_EVAL \
 Drivers/STM32F2xx_HAL_Driver/Src \
+Middlewares/JSNative/src \
 Middlewares/Third_Party/FreeRTOS/CMSIS_RTOS \
 Middlewares/Third_Party/FreeRTOS/Source \
 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang \
@@ -50,6 +38,7 @@ Middlewares/Third_Party/LwIP/src/core \
 Middlewares/Third_Party/LwIP/src/core/ipv4 \
 Middlewares/Third_Party/LwIP/src/netif \
 Middlewares/Third_Party/LwIP/system/OS \
+Middlewares/TinyJS/src \
 Src \
 . \
 
