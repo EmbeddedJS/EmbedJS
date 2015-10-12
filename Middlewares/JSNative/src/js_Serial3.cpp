@@ -35,7 +35,6 @@ extern "C"{
 	}
 
 	void js_Serial3_Read(CScriptVar *v, void *userdata){
-
 		char str[2] = {RxBuffer3[0],0};
 		int RxXferCount = 0;
 
