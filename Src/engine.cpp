@@ -27,6 +27,9 @@ extern "C"{
 		js->addNative("function Serial3.begin(speed)",&js_Serial3_Begin,0);
 		js->addNative("function Serial3.print(str)",&js_Serial3_Print,0);
 		js->addNative("function Serial3.read()",&js_Serial3_Read,0);
+
+		/** ADC **/
+		js->addNative("function analogRead(type,pin)",&js_analogRead,0);
 	}
 	void Execute(const char *str){
 		js->execute(str);
