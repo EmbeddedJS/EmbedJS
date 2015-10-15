@@ -39,8 +39,12 @@ while (1) {
             digitalWrite(2, 14, 1);
             digitalWrite(2, 15, 0);
         }
-		Serial3.print(ch);
-		Serial3.print("\n");
-        Delay(1000);
+        Serial3.print(ch);
+        Serial3.print("\n");
+        Delay(100);
+        digitalWrite(2, 12, 0);
+        digitalWrite(2, 13, 0);
+        digitalWrite(2, 14, 0);
+        digitalWrite(2, 15, 0);
     }
 }
