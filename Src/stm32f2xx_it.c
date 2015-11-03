@@ -40,6 +40,9 @@
 /* Private function prototypes -----------------------------------------------*/
 extern void xPortSysTickHandler( void );
 extern UART_HandleTypeDef Serial3;
+extern UART_HandleTypeDef Serial2;
+extern UART_HandleTypeDef Serial1;
+
 extern void HAL_UART_IRQHandler(UART_HandleTypeDef *huart);
 /* Private functions ---------------------------------------------------------*/
 
@@ -158,4 +161,14 @@ void EXTI15_10_IRQHandler(void)
 void USART3_IRQHandler(void)
 {
 	HAL_UART_IRQHandler(&Serial3);
+}
+
+void USART2_IRQHandler(void)
+{
+	HAL_UART_IRQHandler(&Serial2);
+}
+
+void USART1_IRQHandler(void)
+{
+	HAL_UART_IRQHandler(&Serial1);
 }
