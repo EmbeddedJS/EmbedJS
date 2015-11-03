@@ -29,6 +29,18 @@ extern "C"{
 		js->addNative("function Serial3.read()",&js_Serial3_Read,0);
 		js->addNative("function Serial3.available()",&js_Serial3_Available,0);
 
+		/** Serial 2 **/
+		js->addNative("function Serial2.begin(speed)",&js_Serial2_Begin,0);
+		js->addNative("function Serial2.print(str)",&js_Serial2_Print,0);
+		js->addNative("function Serial2.read()",&js_Serial2_Read,0);
+		js->addNative("function Serial2.available()",&js_Serial2_Available,0);
+
+		/** Serial 1 **/
+		js->addNative("function Serial2.begin(speed)",&js_Serial1_Begin,0);
+		js->addNative("function Serial2.print(str)",&js_Serial1_Print,0);
+		js->addNative("function Serial2.read()",&js_Serial1_Read,0);
+		js->addNative("function Serial2.available()",&js_Serial1_Available,0);
+
 		/** ADC **/
 		js->addNative("function analogRead(type,pin)",&js_analogRead,0);
 	}
