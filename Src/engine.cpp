@@ -43,6 +43,9 @@ extern "C"{
 
 		/** ADC **/
 		js->addNative("function analogRead(type,pin)",&js_analogRead,0);
+
+		/** Millis **/
+		js->addNative("function Millis()",&Millis,0);
 	}
 	void Execute(const char *str){
 		js->execute(str);
@@ -51,6 +54,10 @@ extern "C"{
 	void Delay(CScriptVar *v, void *userdata){
 		int delay = v->getParameter("msec")->getInt();
 		osDelay(delay);
+	}
+
+	void Millis(CScriptVar *v, void *userdata){
+		v->getReturnVar()->setInt(HAL_GetTick());
 	}
 }
 

@@ -19,6 +19,9 @@ extern "C"{
 	static void RegisterNative();
 	//Delay Functions
 	void Delay(CScriptVar *v, void *userdata);
+
+	//Milis Function
+	void Millis(CScriptVar *v, void *userdata);
 }
 
 
