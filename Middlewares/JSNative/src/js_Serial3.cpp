@@ -35,7 +35,7 @@ extern "C"{
 	}
 
 	void js_Serial3_Read(CScriptVar *v, void *userdata){
-		__HAL_UART_DISABLE(&Serial3);
+		HAL_NVIC_DisableIRQ(USART3_IRQn);
 		char str[2] = {RxBuffer3[0],0};
 		int RxXferCount = 0;
 
@@ -52,7 +52,7 @@ extern "C"{
 		Serial3.RxXferCount ++;
 		Serial3.pRxBuffPtr --;
 		v->getReturnVar()->setString(str);
-		__HAL_UART_ENABLE(&Serial3);
+		HAL_NVIC_EnableIRQ(USART3_IRQn);
 	}
 
 	void js_Serial3_Available(CScriptVar *v, void *userdata){
