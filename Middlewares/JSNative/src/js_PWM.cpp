@@ -4,8 +4,8 @@ extern "C"{
 		0,0,GPIOC,0,0
 	};
 	static uint32_t Pins[] = {
-			0,0,0,0,0,0,TIM_CHANNEL_1,TIM_CHANNEL_2,TIM_CHANNEL_3,
-			TIM_CHANNEL_4,0,0,0,0,0,0
+			-1,-1,-1,-1,-1,-1,TIM_CHANNEL_1,TIM_CHANNEL_2,TIM_CHANNEL_3,
+			TIM_CHANNEL_4,-1,-1,-1,-1,-1,-1
 	};
 
 	TIM_HandleTypeDef    TimHandle;
@@ -17,25 +17,38 @@ extern "C"{
 		int pin = v->getParameter("pin")->getInt();
 		int value = v->getParameter("value")->getInt();
 
-		if( Types[type] == 0 || Pins[pin] == 0 || value < 0 || value > 1024)
+		if( Types[type] == 0 || Pins[pin] == -1 || value < 0 || value > 1024)
 			return;
 
 		TimHandle.Instance = TIMx;
 
 		uhPrescalerValue = (uint32_t)((SystemCoreClock / 2) / 15000000) - 1;
 		TimHandle.Init.Prescaler = uhPrescalerValue;
-		TimHandle.Init.Period = 1024 -1;
+		TimHandle.Init.Period = 1024;
 		TimHandle.Init.ClockDivision = 0;
 		TimHandle.Init.CounterMode = TIM_COUNTERMODE_UP;
 	    if(HAL_TIM_PWM_Init(&TimHandle) != HAL_OK)
 	    	return;
 
+
 		sConfig.OCMode = TIM_OCMODE_PWM1;
 		sConfig.OCPolarity = TIM_OCPOLARITY_HIGH;
 		sConfig.OCFastMode = TIM_OCFAST_DISABLE;
 		sConfig.Pulse = value;
+
+//		if(value ==0){
+//			HAL_TIM_PWM_Stop(TimHandle,Pins[pin]);
+//			return;
+//		}
+
 		if(HAL_TIM_PWM_ConfigChannel(&TimHandle, &sConfig, Pins[pin]) != HAL_OK)
 			return;
+
+		if( value == 0){
+			HAL_TIM_PWM_Stop(&TimHandle,Pins[pin]);
+			return;
+		}
+
 		if(HAL_TIM_PWM_Start(&TimHandle, Pins[pin]) != HAL_OK)
 			return;
 	}
