@@ -1,46 +1,72 @@
 //Bluetooth
 Serial3.begin(9600);
 
-//GPIO
-pinMode(2, 12, 1);
-pinMode(2, 13, 1);
-pinMode(2, 14, 1);
-pinMode(2, 15, 1);
-
+// analogWrite(PINC,6,512);
+// analogWrite(PINC,7,0);
+// analogWrite(PINC,8,512);
+// analogWrite(PINC,9,0);
 
 while (1) {
     while (Serial3.available()) {
         var ch = Serial3.read();
         if (ch == 'x') {
-            digitalWrite(2, 12, 1);
-            digitalWrite(2, 13, 0);
-            digitalWrite(2, 14, 1);
-            digitalWrite(2, 15, 0);
+            analogWrite(PINC,6,0);
+            analogWrite(PINC,7,512);
+            analogWrite(PINC,8,0);
+            analogWrite(PINC,9,512);
         }
         if (ch == 'w') {
-            digitalWrite(2, 12, 0);
-            digitalWrite(2, 13, 1);
-            digitalWrite(2, 14, 0);
-            digitalWrite(2, 15, 1);
+            analogWrite(PINC,6,512);
+            analogWrite(PINC,7,0);
+            analogWrite(PINC,8,512);
+            analogWrite(PINC,9,0);
         }
         if (ch == 'd') {
-            digitalWrite(2, 12, 0);
-            digitalWrite(2, 13, 1);
-            digitalWrite(2, 14, 0);
-            digitalWrite(2, 15, 0);
+            analogWrite(PINC,6,512);
+            analogWrite(PINC,7,0);
+            analogWrite(PINC,8,0);
+            analogWrite(PINC,9,0);
         }
         if (ch == 'a') {
-            digitalWrite(2, 12, 0);
-            digitalWrite(2, 13, 0);
-            digitalWrite(2, 14, 0);
-            digitalWrite(2, 15, 1);
+            analogWrite(PINC,6,0);
+            analogWrite(PINC,7,0);
+            analogWrite(PINC,8,512);
+            analogWrite(PINC,9,0);
         }
         if (ch == 's') {
-            digitalWrite(2, 12, 0);
-            digitalWrite(2, 13, 0);
-            digitalWrite(2, 14, 0);
-            digitalWrite(2, 15, 0);
-        };
+            analogWrite(PINC,6,0);
+            analogWrite(PINC,7,0);
+            analogWrite(PINC,8,0);
+            analogWrite(PINC,9,0);
+        }
+        
+        if(ch == 'e'){
+            analogWrite(PINC,6,256);
+            analogWrite(PINC,7,0);
+            analogWrite(PINC,8,512);
+            analogWrite(PINC,9,0);
+        }
+        
+        if(ch == 'q'){
+            analogWrite(PINC,6,512);
+            analogWrite(PINC,7,0);
+            analogWrite(PINC,8,256);
+            analogWrite(PINC,9,0);
+        }
+        
+        if(ch == 'c'){
+            analogWrite(PINC,6,0);
+            analogWrite(PINC,7,256);
+            analogWrite(PINC,8,0);
+            analogWrite(PINC,9,512);
+        }
+        
+        if(ch == 'z'){
+            analogWrite(PINC,6,0);
+            analogWrite(PINC,7,512);
+            analogWrite(PINC,8,0);
+            analogWrite(PINC,9,256);
+        }
 
     }
 
